@@ -4,15 +4,8 @@ let countTimer = document.getElementById("clicker__timer");
 
 
 function countClickFunc() {
-    let evenOdd = countClick.innerHTML++;
     let cookieSize = document.getElementById("cookie");
-
-    if (evenOdd % 2 === 0) {
-        cookieSize.width = 250;
-    }
-    if (!(evenOdd % 2 === 0)) {
-        cookieSize.width = 200;
-    }
+    cookieSize.width = ++countClick.textContent % 2 ? 250 : 200;
 };
 
 
