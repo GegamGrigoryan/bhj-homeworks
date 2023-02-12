@@ -1,14 +1,13 @@
-let subMenu = document.querySelectorAll('.menu_sub');
-let arrSub = [...subMenu];
+const menuLink = [...document.getElementsByClassName('menu__link')]
 
-arrSub.forEach(function (arrSub) {
-    arrSub.closest('li').onclick = function () {
-        closseMenu()
-        if (subMenu.classList != 'menu_active') {
-            return (arrSub.classList.toggle('menu_active')), false;
+menuLink.forEach(item => {
+    item.onclick = (event) => {
+        let parent = Array.from(item.parentElement.getElementsByClassName('menu_sub'))
+        if (parent.length == 1) {
+            event.preventDefault();
+            parent.forEach(item => {
+                item.classList.toggle('menu_active');
+            })
         }
     }
 })
-function closseMenu() {
-    arrSub.forEach(item => item.classList.remove('menu_active'));
-}
