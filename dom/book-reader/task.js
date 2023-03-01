@@ -29,6 +29,7 @@ fontControl.forEach(el => {
         сolor.forEach(el => {
             el.classList.remove('color_active')
         })
+
         if (fontColor == "gray") {
             event.preventDefault();
             event.target.classList.add('color_active');
