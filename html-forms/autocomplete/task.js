@@ -71,11 +71,13 @@ class Autocomplete {
   getMatches(text) {
     const option = [...this.input.options];
 
-    return option.filter(function (el) {
-      return el.text.toLowerCase().includes(text.toLowerCase())
-    }).map(function (item) {
-      return { text: item.text, value: item.value };
-    })
+    return option
+      .filter((el) => {
+        return el.text.toLowerCase().includes(text.toLowerCase());
+      })
+      .map((item) => {
+        return { text: item.text, value: item.value };
+      });
   }
 }
 
