@@ -1,15 +1,13 @@
 const product = [...document.querySelectorAll(".product")];
 let countProduct = [...document.querySelectorAll(".product__quantity-value")];
 const cartProduct = [...document.querySelectorAll(".cart__products")];
-// const productInCart = [...document.querySelectorAll(".cart__product")];
 const img = [...document.getElementsByTagName("img")];
 const productAdd = [...document.querySelectorAll(".product__add")];
 let flag = [];
-
 product.forEach((product) => {
 
-
     product.addEventListener("click", (event) => {
+
         const target = event.target;
         const id = target.closest(".product").dataset.id - 1;
 
@@ -19,11 +17,12 @@ product.forEach((product) => {
         if (target.classList.contains("product__quantity-control_dec")) {
             minus(id);
         }
-        if (target.classList.contains("product__add")) {
-            // flag.push(id);
+        if (target.classList.contains("product__add") && !(flag.includes(id))) {
+            flag.push(id)
             addToCart(id);
-        }
 
+        }
+        ///////////
         function plus(id) {
             ++countProduct[id].textContent;
         }
@@ -37,15 +36,14 @@ product.forEach((product) => {
             if (countProduct[id].textContent == 0) {
                 return false;
             }
-            cartProduct[0].insertAdjacentHTML(
-                "afterbegin",
-                ` 
-        <div class="cart__product" data-id="${id + 1}">
-        <img class="cart__product-image" src="${img[id].currentSrc}">
-        <div class="cart__product-count">${countProduct[id].textContent}</div>
-        </div>`
-            );
+            cartProduct[0].innerHTML += ` 
+<div class="cart__product" data-id="${id + 1}">
+<img class="cart__product-image" src="${img[id].currentSrc}">
+<div class="cart__product-count">${countProduct[id].textContent}</div>
+</div>`
         }
     });
 });
+
+
 
