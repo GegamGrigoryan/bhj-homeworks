@@ -9,6 +9,7 @@ const items = document.querySelector("#items");
 
 
 xhr.addEventListener('readystatechange', function () {
+    
     if (xhr.readyState === xhr.DONE) {
         const get = JSON.parse(xhr.response)
         let valute = get.response.Valute;
