@@ -6,10 +6,6 @@ form.addEventListener("submit", (event) => {
   let text = input.value.trim();
   event.preventDefault();
 
-  if (text == "null" || text == "" || text.keyCode === 32) {
-    return false;
-  }
-
   tasks.insertAdjacentHTML(
     "afterbegin",
     `  <div class="task">
@@ -19,10 +15,11 @@ form.addEventListener("submit", (event) => {
             <a href="#" class="task__remove">&times;</a>
              </div>`
   );
-  tasks.addEventListener("click", (event) => {
-    if (event.target.classList.contains("task__remove")) {
-      event.target.closest(".task").remove();
-    }
-  });
   form.reset();
+});
+
+tasks.addEventListener("click", (event) => {
+  if (event.target.classList.contains("task__remove")) {
+    event.target.closest(".task").remove();
+  }
 });
