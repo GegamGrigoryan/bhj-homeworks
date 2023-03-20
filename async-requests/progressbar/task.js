@@ -6,7 +6,7 @@ const input = document.querySelector("#file");
 const inputText = document.querySelector(".input__wrapper-desc");
 
 form.addEventListener("submit", (event) => {
-    xhr.addEventListener("readystatechange", function () {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState == 1) {
             progress.value = 0.25;
         }
@@ -22,7 +22,7 @@ form.addEventListener("submit", (event) => {
         if (xhr.status >= 400) {
             alert(`Упс.. Ошибка`);
         }
-    });
+    };
     xhr.open("POST", https);
     xhr.send(input.files[0]);
     event.preventDefault();
